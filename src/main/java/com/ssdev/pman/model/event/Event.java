@@ -1,7 +1,8 @@
-package com.ssdev.pman.model;
+package com.ssdev.pman.model.event;
 
 import com.ssdev.pman.constant.EventStatus;
 import com.ssdev.pman.constant.EventType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 public class Event {
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false, length = 30)
