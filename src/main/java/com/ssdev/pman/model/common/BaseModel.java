@@ -9,10 +9,10 @@ import java.util.Date;
 
 @MappedSuperclass
 public class BaseModel {
-    @Column(name = "created_by", nullable = false)
+    @Column(name = "created_by")
     private Long createdBy;
 
-    @Column(name = "created_on", nullable = false)
+    @Column(name = "created_on")
     private Date createdOn;
 
     @Column(name = "updated_on")
