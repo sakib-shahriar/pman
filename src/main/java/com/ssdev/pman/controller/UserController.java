@@ -1,46 +1,27 @@
 package com.ssdev.pman.controller;
-
-import com.ssdev.pman.authentication.JwtUtil;
-import com.ssdev.pman.dto.AuthenticationRequest;
-import com.ssdev.pman.dto.AuthenticationResponse;
+import com.ssdev.pman.model.user.User;
+import com.ssdev.pman.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/user")
-public class UserController {
-    private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
-    private final JwtUtil jwtUtil;
+import java.util.List;
 
+@RestController
+@RequestMapping("/users")
+public class UserController {
     @Autowired
-    public UserController(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtUtil jwtUtil) {
-        this.authenticationManager = authenticationManager;
-        this.userDetailsService = userDetailsService;
-        this.jwtUtil = jwtUtil;
+    private UserService userService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ResponseEntity<?> getUsers() {
+        List<User> userList = userService.getUsers();
+        return ResponseEntity.ok(userList);
     }
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) throws Exception{
-        try {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword());
-            authenticationManager.authenticate(authenticationToken);
-        }
-        catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUserName());
-        String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserByUserName(@PathVariable String id) {
+        List<User> userList = userService.getUser(id);
+        return ResponseEntity.ok(userList);
     }
 }

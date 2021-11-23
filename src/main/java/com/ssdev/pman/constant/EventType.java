@@ -1,5 +1,9 @@
 package com.ssdev.pman.constant;
 
-public enum EventType {
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
+public enum EventType {
+    SEND_EMAIL("Send Email");
+    private final String name;
 }
