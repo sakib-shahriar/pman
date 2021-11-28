@@ -1,4 +1,4 @@
-package com.ssdev.pman.dto;
+package com.ssdev.pman.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

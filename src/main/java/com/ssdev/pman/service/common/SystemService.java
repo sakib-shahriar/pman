@@ -17,6 +17,7 @@ public class SystemService {
         user.setUserName("sakib");
         user.setPassword(new BCryptPasswordEncoder().encode("123456"));
         user.setRole(Role.ADMIN);
+        user.setEmail("skbshariar@gmail.com");
         userRepository.save(user);
     }
 }

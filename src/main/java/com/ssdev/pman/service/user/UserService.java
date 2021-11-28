@@ -1,8 +1,10 @@
 package com.ssdev.pman.service.user;
 
-import com.ssdev.pman.model.user.User;
+import com.ssdev.pman.dto.response.UserResponse;
 import com.ssdev.pman.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,19 +15,20 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getUsers() {
+    public ResponseEntity<List<UserResponse>> getUsers() {
         return getList(null);
     }
 
-    public List<User> getUser(String userName) {
+    public ResponseEntity<List<UserResponse>> getUser(String userName) {
         return getList(userName);
     }
 
-    private List<User> getList(String userName) {
+    private ResponseEntity<List<UserResponse>> getList(String userName) {
         if(userName == null) {
-            return userRepository.findAllByOrderByIdAsc();
+            return new ResponseEntity<List<UserResponse>>(userRepository.findALlResponse(), HttpStatus.OK);
         }
-        User user = userRepository.findUserByUserName(userName);
-        return user != null ? List.of(user) : new ArrayList<>();
+        UserResponse userResponse = userRepository.findUserByUserNameResponse(userName);
+        List<UserResponse> list = userResponse != null ? List.of(userResponse) : new ArrayList<>();
+        return new ResponseEntity<List<UserResponse>>(list, HttpStatus.OK);
     }
 }

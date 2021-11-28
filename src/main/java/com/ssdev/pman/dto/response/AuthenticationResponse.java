@@ -1,4 +1,4 @@
-package com.ssdev.pman.dto;
+package com.ssdev.pman.dto.response;
 
 import lombok.Getter;
 
