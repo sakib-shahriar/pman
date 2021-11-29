@@ -11,7 +11,8 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findUserByUserName(String userName);
-
+    Integer countAllByEmail(String email);
+    Integer countAllByUserName(String userName);
 
     @Query("select new com.ssdev.pman.dto.response.UserResponse(u.userName, u.role, u.email) from User u")
     List<UserResponse> findALlResponse();

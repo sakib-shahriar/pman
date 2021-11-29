@@ -1,6 +1,7 @@
 package com.ssdev.pman.model.common;
 
 import com.ssdev.pman.constant.Status;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -8,6 +9,7 @@ import javax.persistence.Version;
 import java.util.Date;
 
 @MappedSuperclass
+@Data
 public class BaseModel {
     @Column(name = "created_by")
     private Long createdBy;

@@ -1,7 +1,9 @@
 package com.ssdev.pman.service.user;
 
 import com.ssdev.pman.dto.response.UserResponse;
+import com.ssdev.pman.model.user.User;
 import com.ssdev.pman.repository.user.UserRepository;
+import com.ssdev.pman.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ValidationUtil validationUtil;
 
     public ResponseEntity<List<UserResponse>> getUsers() {
         return getList(null);
@@ -30,5 +34,11 @@ public class UserService {
         UserResponse userResponse = userRepository.findUserByUserNameResponse(userName);
         List<UserResponse> list = userResponse != null ? List.of(userResponse) : new ArrayList<>();
         return new ResponseEntity<List<UserResponse>>(list, HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<UserResponse>> saveUser(User user) {
+        validationUtil.validateUser(user);
+        user = userRepository.save(user);
+        return getUser(user.getUserName());
     }
 }
