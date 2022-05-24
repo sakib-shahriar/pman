@@ -1,8 +1,8 @@
 package com.ssdev.pman.util;
 
 import com.ssdev.pman.execption.ApiException;
-import com.ssdev.pman.model.user.User;
-import com.ssdev.pman.repository.user.UserRepository;
+import com.ssdev.pman.model.User;
+import com.ssdev.pman.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

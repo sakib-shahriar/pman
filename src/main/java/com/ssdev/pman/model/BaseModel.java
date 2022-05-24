@@ -1,4 +1,4 @@
-package com.ssdev.pman.model.common;
+package com.ssdev.pman.model;
 
 import com.ssdev.pman.constant.Status;
 import lombok.Data;

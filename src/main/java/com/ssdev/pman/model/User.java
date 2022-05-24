@@ -1,7 +1,6 @@
-package com.ssdev.pman.model.user;
+package com.ssdev.pman.model;
 
 import com.ssdev.pman.constant.Role;
-import com.ssdev.pman.model.common.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 

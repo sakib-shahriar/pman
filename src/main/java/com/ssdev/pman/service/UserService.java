@@ -1,8 +1,8 @@
-package com.ssdev.pman.service.user;
+package com.ssdev.pman.service;
 
 import com.ssdev.pman.dto.response.UserResponse;
-import com.ssdev.pman.model.user.User;
-import com.ssdev.pman.repository.user.UserRepository;
+import com.ssdev.pman.model.User;
+import com.ssdev.pman.repository.UserRepository;
 import com.ssdev.pman.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,8 @@
-package com.ssdev.pman.model.event;
+package com.ssdev.pman.model;
 
 import com.ssdev.pman.constant.EventStatus;
 import com.ssdev.pman.constant.EventType;
 
-import com.ssdev.pman.model.common.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 

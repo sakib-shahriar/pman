@@ -1,6 +1,6 @@
 package com.ssdev.pman.dto;
 
-import com.ssdev.pman.model.user.User;
+import com.ssdev.pman.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

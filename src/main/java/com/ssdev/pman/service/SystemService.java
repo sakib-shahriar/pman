@@ -1,8 +1,8 @@
-package com.ssdev.pman.service.common;
+package com.ssdev.pman.service;
 
 import com.ssdev.pman.constant.Role;
-import com.ssdev.pman.model.user.User;
-import com.ssdev.pman.repository.user.UserRepository;
+import com.ssdev.pman.model.User;
+import com.ssdev.pman.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

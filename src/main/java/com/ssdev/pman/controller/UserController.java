@@ -1,8 +1,8 @@
 package com.ssdev.pman.controller;
 import com.ssdev.pman.dto.response.UserResponse;
 import com.ssdev.pman.execption.ApiException;
-import com.ssdev.pman.model.user.User;
-import com.ssdev.pman.service.user.UserService;
+import com.ssdev.pman.model.User;
+import com.ssdev.pman.service.UserService;
 import com.ssdev.pman.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
