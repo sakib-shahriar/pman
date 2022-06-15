@@ -1,4 +1,4 @@
-package com.ssdev.pman.model;
+package com.ssdev.pman.entity;
 
 import lombok.Getter;
 import lombok.Setter;

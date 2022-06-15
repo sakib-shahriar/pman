@@ -1,4 +1,4 @@
-package com.ssdev.pman.model;
+package com.ssdev.pman.entity;
 
 import com.ssdev.pman.constant.EventStatus;
 import com.ssdev.pman.constant.EventType;

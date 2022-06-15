@@ -1,7 +1,7 @@
 package com.ssdev.pman.service;
 
 import com.ssdev.pman.dto.CustomUserDetails;
-import com.ssdev.pman.model.User;
+import com.ssdev.pman.entity.User;
 import com.ssdev.pman.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

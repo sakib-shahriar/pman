@@ -1,7 +1,7 @@
 package com.ssdev.pman.repository;
 
 import com.ssdev.pman.dto.response.UserResponse;
-import com.ssdev.pman.model.User;
+import com.ssdev.pman.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
