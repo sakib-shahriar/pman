@@ -10,7 +10,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Data
-public class BaseModel {
+public class BaseEntity {
     @Column(name = "created_by")
     private Long createdBy;
 

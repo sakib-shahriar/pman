@@ -1,32 +1,28 @@
 package com.ssdev.pman.entity;
 
 import com.ssdev.pman.constant.Role;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Data
 @Entity
-@Setter
-@Getter
-public class User extends BaseModel {
+@Table(name = "pman_user")
+public class User extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
 
     @NotBlank
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String userName;
 
     @Email
     @NotBlank
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @NotBlank

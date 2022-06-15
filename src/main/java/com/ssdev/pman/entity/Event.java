@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Event extends BaseModel {
+public class Event extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;

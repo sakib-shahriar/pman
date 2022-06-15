@@ -14,10 +14,14 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private final UserRepository userRepository;
+    private final ValidationUtil validationUtil;
+
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ValidationUtil validationUtil;
+    public UserService(UserRepository userRepository, ValidationUtil validationUtil) {
+        this.userRepository = userRepository;
+        this.validationUtil = validationUtil;
+    }
 
     public ResponseEntity<List<UserResponse>> getUsers() {
         return getList(null);
