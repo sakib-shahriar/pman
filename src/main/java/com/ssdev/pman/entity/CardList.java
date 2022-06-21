@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "card-list")
+@Table(name = "card_list")
 public class CardList extends BaseEntity {
     @Id
     @GeneratedValue
@@ -17,6 +17,6 @@ public class CardList extends BaseEntity {
     @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cardList",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Card> cards;
 }

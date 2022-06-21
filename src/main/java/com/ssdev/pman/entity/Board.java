@@ -16,6 +16,6 @@ public class Board extends BaseEntity {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CardList> cardLists;
 }

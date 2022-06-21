@@ -40,7 +40,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) throws Exception{
+    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) throws Exception {
         try {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword());
             authenticationManager.authenticate(authenticationToken);
