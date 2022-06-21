@@ -1,4 +1,4 @@
-package com.ssdev.pman.authentication;
+package com.ssdev.pman.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

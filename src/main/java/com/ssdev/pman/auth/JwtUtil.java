@@ -1,4 +1,4 @@
-package com.ssdev.pman.authentication;
+package com.ssdev.pman.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

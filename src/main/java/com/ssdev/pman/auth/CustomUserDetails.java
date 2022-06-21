@@ -1,4 +1,4 @@
-package com.ssdev.pman.dto;
+package com.ssdev.pman.auth;
 
 import com.ssdev.pman.entity.User;
 import org.springframework.security.core.GrantedAuthority;

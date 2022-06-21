@@ -1,6 +1,6 @@
 package com.ssdev.pman.controller;
 
-import com.ssdev.pman.authentication.JwtUtil;
+import com.ssdev.pman.auth.JwtUtil;
 import com.ssdev.pman.dto.request.AuthenticationRequest;
 import com.ssdev.pman.dto.response.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
