@@ -1,7 +1,9 @@
 package com.ssdev.pman.service;
 
+import com.ssdev.pman.constant.Entity;
 import com.ssdev.pman.dto.response.UserResponse;
 import com.ssdev.pman.entity.User;
+import com.ssdev.pman.execption.ResourceNotFoundException;
 import com.ssdev.pman.repository.UserRepository;
 import com.ssdev.pman.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,10 @@ public class UserService {
             return new ResponseEntity<List<UserResponse>>(userRepository.findALlResponse(), HttpStatus.OK);
         }
         UserResponse userResponse = userRepository.findUserByUserNameResponse(userName);
-        List<UserResponse> list = userResponse != null ? List.of(userResponse) : new ArrayList<>();
-        return new ResponseEntity<List<UserResponse>>(list, HttpStatus.OK);
+        if (userResponse == null) {
+            throw new ResourceNotFoundException(Entity.User);
+        }
+        return new ResponseEntity<List<UserResponse>>(List.of(userResponse), HttpStatus.OK);
     }
 
     public ResponseEntity<List<UserResponse>> saveUser(User user) {

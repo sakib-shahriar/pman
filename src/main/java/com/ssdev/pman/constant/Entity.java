@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum Entity {
     User("User"),
+    Board("Board"),
     Event("Event");
 
     private final String name;
