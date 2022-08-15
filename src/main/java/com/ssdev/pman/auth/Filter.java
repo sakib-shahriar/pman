@@ -30,7 +30,7 @@ public class Filter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("authorization");
-        String token = authorizationHeader != null ? authorizationHeader.substring(7) : null;
+        String token = authorizationHeader != null && !authorizationHeader.isEmpty() ? authorizationHeader.substring(7) : null;
         String userName = token != null && authorizationHeader.startsWith("Bearer") ? jwtUtil.extractUserName(token) : null;
 
         if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -41,6 +41,9 @@ public class Filter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
+        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
+        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Headers","Access-Control-Allow-Headers, Content-Type, Authorization");
         filterChain.doFilter(request, response);
     }
 }

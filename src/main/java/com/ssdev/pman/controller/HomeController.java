@@ -54,6 +54,6 @@ public class HomeController {
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUserName());
         String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, request.getUserName()));
     }
 }

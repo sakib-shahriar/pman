@@ -13,11 +13,13 @@ public class SystemService {
     private UserRepository userRepository;
 
     public void initializeUser() {
-        User user = new User();
-        user.setUserName("sakib");
-        user.setPassword(new BCryptPasswordEncoder().encode("123456"));
-        user.setRole(Role.ADMIN);
-        user.setEmail("skbshariar@gmail.com");
-        userRepository.save(user);
+        if (userRepository.count() == 0) {
+            User user = new User();
+            user.setUserName("sakib");
+            user.setPassword(new BCryptPasswordEncoder().encode("123456"));
+            user.setRole(Role.ADMIN);
+            user.setEmail("skbshariar@gmail.com");
+            userRepository.save(user);
+        }
     }
 }
