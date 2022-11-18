@@ -1,7 +1,5 @@
 package com.ssdev.pman.util;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -33,9 +31,5 @@ public class CommonUtil {
             message.append("field is not valid");
         }
         return message.toString();
-    }
-
-    public UserDetails getLoggedInUser() {
-        return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

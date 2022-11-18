@@ -41,9 +41,9 @@ public class Filter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Headers","Access-Control-Allow-Headers, Content-Type, Authorization");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+        response.addHeader("Access-Control-Allow-Headers","Access-Control-Allow-Headers, Content-Type, Authorization");
         filterChain.doFilter(request, response);
     }
 }

@@ -2,6 +2,7 @@ package com.ssdev.pman.entity;
 
 import com.ssdev.pman.constant.Role;
 import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name = "pman_user")
+@EntityListeners(AuditingEntityListener.class)
 public class User extends BaseEntity {
     @Id
     @GeneratedValue
