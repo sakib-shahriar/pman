@@ -31,14 +31,20 @@ public class Filter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("authorization");
         String token = authorizationHeader != null && !authorizationHeader.isEmpty() ? authorizationHeader.substring(7) : null;
-        String userName = token != null && authorizationHeader.startsWith("Bearer") ? jwtUtil.extractUserName(token) : null;
-
-        if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
-            if(jwtUtil.validateToken(token, userDetails)) {
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        if (token != null && authorizationHeader.startsWith("Bearer")) {
+            try {
+                String userName = token != null && authorizationHeader.startsWith("Bearer") ? jwtUtil.extractUserName(token) : null;
+                if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+                    if(jwtUtil.validateToken(token, userDetails)) {
+                        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
         }
         response.addHeader("Access-Control-Allow-Origin", "*");
